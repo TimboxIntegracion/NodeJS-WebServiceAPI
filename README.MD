@@ -14,24 +14,24 @@
     <li>Consulta_lrfc</li>
 </ul> 
 
-<p>Para realizar las solicitudes HTTP en node.js se utlizó la version de node 11.15.0 en conjunto con la biblioteca 'axios' para realizar las peticiones HTTP</p>
+<p>Para realizar las solicitudes HTTP en node.js se utlizó la version de node 11.15.0 en conjunto con la biblioteca "axios" para realizar las peticiones HTTP</p>
 
 <h4>Instalación de node:</h4>
-
+<p>
     	Usando nvm
     	nvm install node
 
     	Usando apt
     	sudo apt install nodejs
-
+</p>
 <h4>Instalación de axios</h4>
-
+<p>
     	npm install axios
-
+</p>
 <h4>Para realizar pruebas desde la terminal con el siguiente comando:</h4>
-
+<p>
 	node archivo.js
-
+</p>
 <h4>Autenticación</h4>
 
 <p>Se requiere una autenticación básica para generar una API-KEY</p>
@@ -39,16 +39,16 @@
 <p> URL de autenticación:</p>
 <span> https://staging.ws.timbox.com.mx/api/auth</span>
 
-<h4>Sniṕpet de Autenticación</h4>
+<h4>Snippet de Autenticación</h4>
 
 <p> El siguiente codigo hace una solicitud a la API del Web Service de Timbox para generar una API KEY y enviarla en conjunto en cada petición posterior. Esta función necesita como parámetros el usuario y la contraseña proporcionados en la cuenta del dashboard de Timbox.</p>
 
-<p>El formato para enviar las credenciales es el siguiente:
+<p>El formato para enviar las credenciales es el siguiente:</p>
 
-	'usuario:contraseña'
+	usuario:contraseña
 	
-Por esta razón se concatenan los textos y se deben transformar a base 64 para poder enviarlos correctamente.
-</p>
+<p>Por esta razón se concatenan los textos y se deben transformar a base 64 para poder enviarlos correctamente.</p>
+
 ```
 var axios = require('axios');
 var APIKEY;
@@ -75,6 +75,7 @@ const init_buscar_acuse = (user, password) => {
 ```
 
 <h4>Método Buscar Acuse</h4>
+
 ```
 var axios = require('axios');
 var APIKEY;
@@ -138,6 +139,7 @@ init_buscar_acuse('user','password');
 ```
 
 <h4>Método Buscar CFDI</h4>
+
 ```
 var axios = require('axios');
 var APIKEY;
@@ -185,6 +187,7 @@ const buscar_cfdi_request = () => {
 
 <h4>Método Timbrar CFDI </h4>
 <p> Para timbrar un XML debe enviarse el archivo cifrado en base 64.</p>
+
 ```
 var axios = require('axios');
 var file64;
@@ -256,6 +259,7 @@ const timbrar_cfdi_request = () => {
 init_timbrar_cfdi('user', 'password');
 ```
 <h4>Método Obtener Consumo </h4>
+
 ```
 var axios = require('axios');
 var APIKEY;
@@ -299,6 +303,7 @@ const obtener_consumo_request = () => {
 init_obtener_consumo('user', 'password');
 ```
 <h4>Método Recuperar Comprobante</h4>
+
 ```
 var axios = require('axios');
 var APIKEY;
@@ -355,6 +360,7 @@ const recuperar_comprobante_request = () => {
 init_recuperar_comprobante('PIRD9607262M7', 'cr1xNPuHyYGnSTgJ5uVx');
 ```
 <h4>Consulta RFC</h4>
+
 ```
 var axios = require('axios');
 var APIKEY;
