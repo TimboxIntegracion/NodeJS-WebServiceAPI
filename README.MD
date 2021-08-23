@@ -45,7 +45,7 @@
 
 <p>El formato para enviar las credenciales es el siguiente:
 
-	<span>'usuario:contraseña'</span>
+	'usuario:contraseña'
 	
 Por esta razón se concatenan los textos y se deben transformar a base 64 para poder enviarlos correctamente.
 </p>
