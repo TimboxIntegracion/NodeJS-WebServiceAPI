@@ -17,21 +17,21 @@
 <p>Para realizar las solicitudes HTTP en node.js se utlizó la version de node 11.15.0 en conjunto con la biblioteca 'axios' para realizar las peticiones HTTP</p>
 
 <h4>Instalación de node:</h4>
-```
+
     	Usando nvm
     	nvm install node
 
     	Usando apt
     	sudo apt install nodejs
-```
+
 <h4>Instalación de axios</h4>
-```
+
     	npm install axios
-```
+
 <h4>Para realizar pruebas desde la terminal con el siguiente comando:</h4>
-```
+
 	node archivo.js
-```
+
 <h4>Autenticación</h4>
 
 <p>Se requiere una autenticación básica para generar una API-KEY</p>
