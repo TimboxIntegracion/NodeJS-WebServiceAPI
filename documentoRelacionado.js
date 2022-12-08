@@ -2,7 +2,7 @@ var axios = require('axios');
 
 var APIKEY;
 
-const init_consulta_lco = (user, password) => {
+const documento_relacionado = (user, password) => {
 
     // Get API key first
     const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
@@ -19,23 +19,30 @@ const init_consulta_lco = (user, password) => {
     axios(config)
         .then(res => {
             APIKEY = res.data.api_key;
-            consulta_lco_request();
+            documento_relacionado_request();
         })
         .catch(err => console.log(err));
 }
 
-const consulta_lco_request = () => {
+const documento_relacionado_request = () => {
 
     // Declare params
     var payload = JSON.stringify({
-        "rfc": "ROPS670907FU1",
-        "no_certificado": "00001000000407219892"
-      });
+        "uuid": "44235C12-0BEF-4919-9B44-7F8BFE44D451",
+        "rfc_receptor": "XIA190128J61",
+        "cert_pem": "-----BEGIN CERTIFICATE-----\
+        -----END CERTIFICATE-----",
+        "llave_pem": "-----BEGIN PRIVATE KEY-----\
+        -----END PRIVATE KEY-----"
+
+
+           })
+
 
     // Params, header, url, method
     var config = {
         method: 'get',
-        url: 'https://staging.ws.timbox.com.mx/api/consulta_lco',
+        url: 'https://staging.ws.timbox.com.mx/api/consultar_documento_relacionado',
         headers: {
             'x-api-key': APIKEY,
             'Content-Type': 'application/json'
@@ -48,9 +55,9 @@ const consulta_lco_request = () => {
             console.log(JSON.stringify(res.data))
         })
         .catch((err) => {
-            console.error('ERROR:', err);
+            console.error('ERROR:', err.response.data.message);
         });
 }
 
-// Start consulta Lco (user, password, rfc, no_certificado )
-init_consulta_lco('PIRD9607262M7', 'cr1xNPuHyYGnSTgJ5uVx');
+// Init (user, password)
+documento_relacionado('usuario', 'password');

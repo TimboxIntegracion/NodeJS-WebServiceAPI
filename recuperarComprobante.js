@@ -28,8 +28,11 @@ const recuperar_comprobante_request = () => {
 
     // Declare params
     var payload = JSON.stringify({
-        "uuids": ["44235C12-0BEF-4919-9B44-7F8BFE44D451"]
-    });
+        "uuid":{
+            "Comprobante":[{ "uuid": "44235C12-0BEF-4919-9B44-7F8BFE44D451"}]
+           }
+           })
+           
 
     // Params, header, url, method
     var config = {
@@ -52,4 +55,4 @@ const recuperar_comprobante_request = () => {
 }
 
 // Init (user, password)
-init_recuperar_comprobante('PIRD9607262M7', 'cr1xNPuHyYGnSTgJ5uVx');
+init_recuperar_comprobante('USER', 'PASS');

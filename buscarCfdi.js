@@ -30,7 +30,7 @@ const buscar_cfdi_request = () => {
     // Declare params
     var payload = JSON.stringify({
         "parametros_cfdis": {
-            "uuid": "44235C12-0BEF-4919-9B44-7F8BFE44D451"
+            "uuid": "3E30C124-58FB-408B-84D6-C253E8E573F1"
         }
     });
 
@@ -55,4 +55,4 @@ const buscar_cfdi_request = () => {
 }
 
 // Init (user, password)
-init_buscar_cfdi('PIRD9607262M7', 'cr1xNPuHyYGnSTgJ5uVx');
+init_buscar_cfdi('usuario', 'password');

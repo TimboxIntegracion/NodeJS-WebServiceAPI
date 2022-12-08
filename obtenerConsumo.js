@@ -47,4 +47,4 @@ const obtener_consumo_request = () => {
 }
 
 // Init (user, password)
-init_obtener_consumo('PIRD9607262M7', 'cr1xNPuHyYGnSTgJ5uVx');
+init_obtener_consumo('usuario', 'password');

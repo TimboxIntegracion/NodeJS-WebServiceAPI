@@ -32,7 +32,7 @@ const buscar_acuse_request = () => {
         "parametros_acuse": {
             "uuids": {
                 "uuid": [
-                    "44235C12-0BEF-4919-9B44-7F8BFE44D451"
+                    "3E30C124-58FB-408B-84D6-C253E8E573F1"
                 ]
             }
         }
@@ -59,4 +59,4 @@ const buscar_acuse_request = () => {
 }
 
 // Init (User, password)
-init_buscar_acuse('PIRD9607262M7', 'cr1xNPuHyYGnSTgJ5uVx');
+init_buscar_acuse('usuario', 'password');

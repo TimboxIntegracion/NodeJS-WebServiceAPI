@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd" Version="4.0" Fecha="2022-11-15T18:47:03" Sello="E41LRC4wDSPyQYARwNHpcuSs2zzD71wXdcn634NKfWqIRuj9vpNsXuxhEkWYuE1W8MVhIVoLz5zDvEJH1fpV+DVPbdXbaQuHbx3ocn9QbNDhvY4+i4xSNsxojyUWgi8H30yiKS/3lxbQMp1/P13JjgD8ecYvcQbZvpOWjk/0NuHl3a48dwHtKeuiXJrfxuokGOT8n99ZsT3rWmfZ3XCzgU+UF1Yo+YCsr8EobqCm1j/LZbZim69BLWTqLP6QyzS4u2XrGcsAq4e1lnoKzJy/6CGShEhHarj9mPMV5YwrsR5c8cdW81Im/pZBHqEbp6evSxRbNJ8hpBCt2o/OXnYaAw==" NoCertificado="30001000000400002329" Certificado="MIIFdjCCA16gAwIBAgIUMzAwMDEwMDAwMDA0MDAwMDIzMjkwDQYJKoZIhvcNAQELBQAwggErMQ8wDQYDVQQDDAZBQyBVQVQxLjAsBgNVBAoMJVNFUlZJQ0lPIERFIEFETUlOSVNUUkFDSU9OIFRSSUJVVEFSSUExGjAYBgNVBAsMEVNBVC1JRVMgQXV0aG9yaXR5MSgwJgYJKoZIhvcNAQkBFhlvc2Nhci5tYXJ0aW5lekBzYXQuZ29iLm14MR0wGwYDVQQJDBQzcmEgY2VycmFkYSBkZSBjYWRpejEOMAwGA1UEEQwFMDYzNzAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBDSVVEQUQgREUgTUVYSUNPMREwDwYDVQQHDAhDT1lPQUNBTjERMA8GA1UELRMIMi41LjQuNDUxJTAjBgkqhkiG9w0BCQITFnJlc3BvbnNhYmxlOiBBQ0RNQS1TQVQwHhcNMTkwNTI5MTgyNTAzWhcNMjMwNTI5MTgyNTAzWjCBnTEYMBYGA1UEAxMPT1NDQVIgS0FMQSBIQUFLMRgwFgYDVQQpEw9PU0NBUiBLQUxBIEhBQUsxGDAWBgNVBAoTD09TQ0FSIEtBTEEgSEFBSzEWMBQGA1UELRMNS0FITzY0MTEwMUIzOTEbMBkGA1UEBRMSS0FITzY0MTEwMUhOVExLUzA2MRgwFgYDVQQLEw9PU0NBUiBLQUxBIEhBQUswggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCpzAZCdaW/104VbylzLTtbbxAV0uLTj+7+vXpenPJyA0n6VLx3AUlbdr8WZJQmw2AsMayXQBuYm++y4YPc8zXKDfJ1LR4XUQr1ml5FzrrWtSjI846uooiztxnjRIVgVu/bGDJ+5jyM6c7h3LWlGBfGGq3EI9Hp0Fq57ErdA9y1+iOMDErEx0KJHYXtgemg5f+pmAw6c89+8YM+iLdLIlGi6Qi9GAaDRimnJPpYAKVeL6l00fv06DGAEewVBF7Kbi892R0yqkfYzFjdWT4uJRFvcvHZUewHJU6UESak+RlDuzpZgbhER0YU0Rdz/kbkC4Gh6wr08lgR5Us8ATGJ4T3ZAgMBAAGjHTAbMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgbAMA0GCSqGSIb3DQEBCwUAA4ICAQDPtmjs0tGUkkIdP4cHGM8eU6YcOPFJSs5lGyLYoDWIMWGoWHLwiXJOy3dmzp7HyN35WrrGN8B82zFeXW9I1ae4HKGXT5vrn5i9s4Mku/YHb77sz4Zc6FBUMtkwjLz2JiW08agnQb6xS/rgq5xs8OvQZw+E4xIDuXLHatgRGuLY2oJ5ZF4t72U5F1v0SkPnsawVsQgHn7BpZz0Ps/p5tsudVIjnz7+5+0g9XPBGWN7Ut+tjmaABFNncIeNWVfDPhb9eRfkzF/bc1OvjiPpIdavBisKVIvwyUbETAFAlW8iYozsMivBjd6N/Cx/sKj3uGI3XZryjLYyGj6PS3FwfEpoq+a/jpGClOFgv7Q4fTfpIwBzyWXYLo5QxE904x0ZvDJdHdXm9Mk+7SSmP0X3HHj6ch1Wp1blJcKiF2trWRexLvPYYb2tBieXu2KxwogSMPyQjHxndP3JBHZhhSdRGYEYSZo86ryOSclRxi0HHWpzBhM0hSJRqwT152zws5hswJc5T6pigzohGTq9L3iMhRH+YYhikAqgbqJq43Ak61KlzHE1ke+ch8xFJuVNhk3o11Vrn85eZCK6JiXMf2x2cF2uCngFjXgUrHROJh1mNs/FWImDtlmflzdH4qRpmvSJWym4RJMtrm5TOzRlCE1YHXgsAqAvjDRszU1KD5gJqmks0aw==" SubTotal="23711.16" Moneda="MXN" Total="1478.02" TipoDeComprobante="E" LugarExpedicion="76116" Exportacion="01" FormaPago="01" MetodoPago="PUE">
+   <cfdi:Emisor Rfc="KAHO641101B39" Nombre="OSCAR KALA HAAK" RegimenFiscal="611" />
+   <cfdi:Receptor Rfc="XAXX010101000" UsoCFDI="S01" DomicilioFiscalReceptor="85750" RegimenFiscalReceptor="605" Nombre="ALEXIS ALEJANDRO VERGARA" />
+   <cfdi:Conceptos>
+      <cfdi:Concepto ClaveProdServ="50326702" Cantidad="12" ClaveUnidad="53" Descripcion="Fresa rumbo junio seca" ValorUnitario="232.87" Importe="2794.44" ObjetoImp="02">
+         <cfdi:Impuestos>
+            <cfdi:Traslados>
+               <cfdi:Traslado Base="2794.44" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="447.1104" />
+               <cfdi:Traslado Base="2794.44" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.080000" Importe="223.5552" />
+            </cfdi:Traslados>
+         </cfdi:Impuestos>
+      </cfdi:Concepto>
+      <cfdi:Concepto ClaveProdServ="50433700" Cantidad="456" ClaveUnidad="26" Descripcion="Hinojos orgánicos secos" ValorUnitario="45.87" Importe="20916.72" ObjetoImp="02">
+         <cfdi:Impuestos>
+            <cfdi:Retenciones>
+               <cfdi:Retencion Base="20916.72" Impuesto="003" TipoFactor="Tasa" TasaOCuota="0.530000" Importe="11085.8616" />
+               <cfdi:Retencion Base="20916.72" Impuesto="003" TipoFactor="Tasa" TasaOCuota="0.300000" Importe="6275.016" />
+               <cfdi:Retencion Base="20916.72" Impuesto="003" TipoFactor="Tasa" TasaOCuota="0.265000" Importe="5542.9308" />
+            </cfdi:Retenciones>
+         </cfdi:Impuestos>
+      </cfdi:Concepto>
+   </cfdi:Conceptos>
+   <cfdi:Impuestos TotalImpuestosTrasladados="670.67" TotalImpuestosRetenidos="22903.81">
+      <cfdi:Retenciones>
+         <cfdi:Retencion Impuesto="003" Importe="22903.81" />
+      </cfdi:Retenciones>
+      <cfdi:Traslados>
+         <cfdi:Traslado Base="2794.44" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="447.11" />
+         <cfdi:Traslado Base="2794.44" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.080000" Importe="223.56" />
+      </cfdi:Traslados>
+   </cfdi:Impuestos>
+</cfdi:Comprobante>

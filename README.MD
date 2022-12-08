@@ -5,13 +5,16 @@
 <p>En el presente documento se encuentra la documentación correspondiente a los snippets de código desarrollados en NodeJs v11.15.0, así como también las librerías externas utilizadas para realizar las solicitudes HTTP correspondientes a la API REST del proyecto de Web Service de Timbox.</p>
 
 <ul>
-    <li>Timbrar_cfdi</li>
-    <li>Buscar_cfdi</li>
-    <li>Buscar_acuses</li>
-    <li>Recuperar_comprobante</li>
-    <li>Obtener_consumo</li>
-    <li>Consulta_lco</li>
-    <li>Consulta_lrfc</li>
+    <li>timbrar_cfdi 3.3</li>
+    <li>timbrar_cfdi 4.0</li>
+    <li>buscar_cfdi</li>
+    <li>buscar_acuses</li>
+    <li>recuperar_comprobante</li>
+    <li>obtener consumo</li>
+    <li>Consulta_documento_relacionado</li>
+    <li>Consulta_peticiones_pendientes</li>
+    <li>cancelacion</li>
+
 </ul> 
 
 <p>Para realizar las solicitudes HTTP en node.js se utlizó la version de node 11.15.0 en conjunto con la biblioteca "axios" para realizar las peticiones HTTP</p>
@@ -81,57 +84,57 @@ var axios = require('axios');
 var APIKEY;
 
 const init_buscar_acuse = (user, password) => {
-   // Get API key first
-   const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
-   const auth = `Basic ${credentials_64}`;
+    // Get API key first
+    const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
+    const auth = `Basic ${credentials_64}`;
 
-   var config = {
-       method: 'get',
-       url: 'https://staging.ws.timbox.com.mx/api/auth',
-       headers: {
-           'Authorization': auth
-       },
-   };
+    var config = {
+        method: 'get',
+        url: 'https://staging.ws.timbox.com.mx/api/auth',
+        headers: {
+            'Authorization': auth
+        },
+    };
 
-   axios(config)
-       .then(res => {
-           APIKEY = res.data.api_key;
-           buscar_acuse_request();
-       })
-       .catch(err => console.log(err));
+    axios(config)
+        .then(res => {
+            APIKEY = res.data.api_key;
+            buscar_acuse_request();
+        })
+        .catch(err => console.log(err));
 }
 
 const buscar_acuse_request = () => {
-   // Declare params:
-   // ** uuid must be array
-   var payload = JSON.stringify({
-       "parametros_acuse": {
-           "uuids": {
-               "uuid": [
-                   "44235C12-0BEF-4919-9B44-7F8BFE44D451"
-               ]
-           }
-       }
-   });
 
-   // Params, header, url, method
-   var config = {
-       method: 'get',
-       url: 'https://staging.ws.timbox.com.mx/api/buscar_acuse_recepcion',
-        headers: {
-           'x-api-key': APIKEY,
-           'Content-Type': 'application/json'
-       },
-       data: payload
-   }
+    // Declare params:
+    // ** uuid must be array
+    var payload = JSON.stringify({
+        "parametros_acuse": {
+            "uuids": {
+                "uuid": [
+                    "3E30C124-58FB-408B-84D6-C253E8E573F1"
+                ]
+            }
+        }
+    });
 
-   axios(config)
-       .then((res) => {
-           console.log(JSON.stringify(res.data))
-       })
-       .catch((err) => {
-           console.error('ERROR:', err.response.data.message);
-       });
+    // Params, header, url, method
+    var config = {
+        method: 'get',
+        url: 'https://staging.ws.timbox.com.mx/api/buscar_acuse_recepcion',
+         headers: {
+            'x-api-key': APIKEY,
+            'Content-Type': 'application/json'
+        },
+        data: payload
+    }
+    axios(config)
+        .then((res) => {
+            console.log(JSON.stringify(res.data))
+        })
+        .catch((err) => {
+            console.error('ERROR:', err.response.data.message);
+        });
 }
 
 // Init (User, password)
@@ -142,50 +145,66 @@ init_buscar_acuse('user','password');
 
 ```
 var axios = require('axios');
-var APIKEY;
-const init_buscar_cfdi = (user, password) => {
-   // Get API key first
-   const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
-   const auth = `Basic ${credentials_64}`;
 
-   var config = {
-       method: 'get',
-       url: 'https://staging.ws.timbox.com.mx/api/auth',
-       headers: {
-           'Authorization': auth
-       },
-   };
-   axios(config)
-       .then(res => {
-           APIKEY = res.data.api_key;
-           buscar_cfdi_request();
-       })
-       .catch(err => console.log(err));
+var APIKEY;
+
+const init_buscar_cfdi = (user, password) => {
+
+    // Get API key first
+    const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
+    const auth = `Basic ${credentials_64}`;
+
+    var config = {
+        method: 'get',
+        url: 'https://staging.ws.timbox.com.mx/api/auth',
+        headers: {
+            'Authorization': auth
+        },
+    };
+
+    
+    axios(config)
+        .then(res => {
+            APIKEY = res.data.api_key;
+            buscar_cfdi_request();
+        })
+        .catch(err => console.log(err));
 }
+
 const buscar_cfdi_request = () => {
-   // Declare params
-   var payload = JSON.stringify({
-       "parametros_cfdis": {
-           "uuid": "44235C12-0BEF-4919-9B44-7F8BFE44D451"
-       }
-   });
-   // Params, header, url, method
-   var config = {
-       method: 'get',
-       url: 'https://staging.ws.timbox.com.mx/api/buscar_cfdi',
-       headers: {
-           'x-api-key': APIKEY,
-           'Content-Type': 'application/json'
-       },
-       data: payload
-   }
-   axios(config)
-       .then((res) => {
-           console.log(JSON.stringify(res.data))
-       })
+
+    // Declare params
+    var payload = JSON.stringify({
+        "parametros_cfdis": {
+            "uuid": "3E30C124-58FB-408B-84D6-C253E8E573F1"
+        }
+    });
+
+    // Params, header, url, method
+    var config = {
+        method: 'get',
+        url: 'https://staging.ws.timbox.com.mx/api/buscar_cfdi',
+        headers: {
+            'x-api-key': APIKEY,
+            'Content-Type': 'application/json'
+        },
+        data: payload
+    }
+
+    axios(config)
+        .then((res) => {
+            console.log(JSON.stringify(res.data))
+        })
+        .catch((err) => {
+            console.error('ERROR:', err.response.data.message);
+        });
+}
+
+// Init (user, password)
+init_buscar_cfdi('user','password');
 ```
 
-<h4>Método Timbrar CFDI </h4>
+<h4>Método Timbrar CFDI 4.0</h4>
 <p> Para timbrar un XML debe enviarse el archivo cifrado en base 64.</p>
 
 ```
@@ -196,7 +215,7 @@ var APIKEY;
 const cfdiFileHandler = () => {
    // File library
    const fs = require('fs')
-   fs.readFile('cfdi_33.xml', 'utf8' , (err, data) => {
+   fs.readFile('cfdi_40.xml', 'utf8' , (err, data) => {
      if (err) {
        console.error(err)
        return
@@ -238,7 +257,7 @@ const timbrar_cfdi_request = () => {
    // Params, header, url, method
    var config = {
        method: 'post',
-       url: 'https://staging.ws.timbox.com.mx/api/timbrar_cfdi',
+       url: 'https://staging.ws.timbox.com.mx/api/timbrar_cfdi_40',
        headers: {
            'x-api-key': APIKEY,
            'Content-Type': 'application/json'
@@ -258,114 +277,228 @@ const timbrar_cfdi_request = () => {
 // Init (user, password)
 init_timbrar_cfdi('user', 'password');
 ```
-<h4>Método Obtener Consumo </h4>
+
+<h4>Método Timbrar CFDI 3.3</h4>
+<p> Para timbrar un XML debe enviarse el archivo cifrado en base 64.</p>
 
 ```
 var axios = require('axios');
+var file64;
 var APIKEY;
-const init_obtener_consumo = (user, password) => {
-   // Get API key first
-   const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
-   const auth = `Basic ${credentials_64}`;
-   var config = {
-       method: 'get',
-       url: 'https://staging.ws.timbox.com.mx/api/auth',
-       headers: {
-           'Authorization': auth },
-   };
-   axios(config)
-       .then(res => {
-           APIKEY = res.data.api_key;
-           obtener_consumo_request();
-       })
-       .catch(err => console.log(err));
-}
-const obtener_consumo_request = () => {
-   // Params, header, url, method
-   var config = {
-       method: 'get',
-       url: 'https://staging.ws.timbox.com.mx/api/obtener_consumo',
-       headers: {
-           'x-api-key': APIKEY,
-           'Content-Type': 'application/json' },
-       data:''
-   }
 
-   axios(config)
-       .then((res) => {
-           console.log(JSON.stringify(res.data))
-       })
-       .catch((err) => {
-           console.error('ERROR:', err.response.data.message);
-       });
+const cfdiFileHandler = () => {
+    
+    // File library
+    const fs = require('fs')
+
+    fs.readFile('cfdi_33.xml', 'utf8' , (err, data) => {
+      if (err) {
+        console.error(err)
+        return
+      }
+
+      
+      file64 = Buffer.from(data).toString('base64');
+      console.log(file64)
+    })
+}
+
+const init_timbrar_cfdi = (user, password) => {
+
+    // read File content and parse to 64
+    cfdiFileHandler();
+
+    // Get API key first
+    const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
+    const auth = `Basic ${credentials_64}`;
+
+    var config = {
+        method: 'get',
+        url: 'https://staging.ws.timbox.com.mx/api/auth',
+        headers: {
+            'Authorization': auth
+        },
+    };
+
+    axios(config)
+        .then(res => {
+            APIKEY = res.data.api_key;
+            timbrar_cfdi_request();
+        })
+        .catch(err => console.log(err));
+}
+
+const timbrar_cfdi_request = () => {
+
+    // Declare params
+    var payload = JSON.stringify({
+        "sxml": file64
+      });
+
+    // Params, header, url, method
+    var config = {
+        method: 'post',
+        url: 'https://staging.ws.timbox.com.mx/api/timbrar_cfdi_33',
+        headers: {
+            'x-api-key': APIKEY,
+            'Content-Type': 'application/json'
+        },
+        data: payload
+    }
+
+    axios(config)
+        .then((res) => {
+            console.log(JSON.stringify(res.data))
+        })
+        .catch((err) => {
+            console.error('ERROR:', err.response.data.message);
+        });
+}
+
+// Init (user, password)
+init_timbrar_cfdi('user', 'password');
+```
+<h4>Método Obtener Consumo </h4>
+
+```
+vvar axios = require('axios');
+
+var APIKEY;
+
+const init_obtener_consumo = (user, password) => {
+
+    // Get API key first
+    const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
+    const auth = `Basic ${credentials_64}`;
+
+    var config = {
+        method: 'get',
+        url: 'https://staging.ws.timbox.com.mx/api/auth',
+        headers: {
+            'Authorization': auth
+        },
+    };
+
+    axios(config)
+        .then(res => {
+            APIKEY = res.data.api_key;
+            obtener_consumo_request();
+        })
+        .catch(err => console.log(err));
+}
+
+const obtener_consumo_request = () => {
+
+    // Params, header, url, method
+    var config = {
+        method: 'get',
+        url: 'https://staging.ws.timbox.com.mx/api/obtener_consumo',
+        headers: {
+            'x-api-key': APIKEY,
+            'Content-Type': 'application/json'
+        },
+        data:''
+    }
+
+    axios(config)
+        .then((res) => {
+            console.log(JSON.stringify(res.data))
+        })
+        .catch((err) => {
+            console.error('ERROR:', err.response.data.message);
+        });
 }
 // Init (user, password)
 init_obtener_consumo('user', 'password');
+
 ```
 <h4>Método Recuperar Comprobante</h4>
 
 ```
 var axios = require('axios');
+
 var APIKEY;
 
 const init_recuperar_comprobante = (user, password) => {
-   // Get API key first
-   const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
-   const auth = `Basic ${credentials_64}`;
 
-   var config = {
-       method: 'get',
-       url: 'https://staging.ws.timbox.com.mx/api/auth',
-       headers: {
-           'Authorization': auth
-       },
-   };
+    // Get API key first
+    const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
+    const auth = `Basic ${credentials_64}`;
 
-   axios(config)
-       .then(res => {
-           APIKEY = res.data.api_key;
-           recuperar_comprobante_request();
-       })
-       .catch(err => console.log(err));
+    var config = {
+        method: 'get',
+        url: 'https://staging.ws.timbox.com.mx/api/auth',
+        headers: {
+            'Authorization': auth
+        },
+    };
+
+    axios(config)
+        .then(res => {
+            APIKEY = res.data.api_key;
+            recuperar_comprobante_request();
+        })
+        .catch(err => console.log(err));
 }
 
 const recuperar_comprobante_request = () => {
 
-   // Declare params
-   var payload = JSON.stringify({
-       "uuids": ["44235C12-0BEF-4919-9B44-7F8BFE44D451"]
-   });
+    // Declare params
+    var payload = JSON.stringify({
+        "uuid":{
+            "Comprobante":[{ "uuid": "44235C12-0BEF-4919-9B44-7F8BFE44D451"}]
+           }
+           })
+           
 
-   // Params, header, url, method
-   var config = {
-       method: 'get',
-       url: 'https://staging.ws.timbox.com.mx/api/recuperar_comprobante',
-       headers: {
-           'x-api-key': APIKEY,
-           'Content-Type': 'application/json'
-       },
-       data: payload
-   }
+    // Params, header, url, method
+    var config = {
+        method: 'get',
+        url: 'https://staging.ws.timbox.com.mx/api/recuperar_comprobante',
+        headers: {
+            'x-api-key': APIKEY,
+            'Content-Type': 'application/json'
+        },
+        data: payload
+    }
 
-   axios(config)
-       .then((res) => {
-           console.log(JSON.stringify(res.data))
-       })
-       .catch((err) => {
-           console.error('ERROR:', err.response.data.message);
-       });
+    axios(config)
+        .then((res) => {
+            console.log(JSON.stringify(res.data))
+        })
+        .catch((err) => {
+            console.error('ERROR:', err.response.data.message);
+        });
 }
 
 // Init (user, password)
-init_recuperar_comprobante('PIRD9607262M7', 'cr1xNPuHyYGnSTgJ5uVx');
+init_recuperar_comprobante('usuario', 'password');
+
 ```
-<h4>Consulta RFC</h4>
+<h4>Método Cancelación CFDI's</h4>
+<p> A partir del 01 de enero de 2022 el SAT modificó el esquema para la cancelación de CFDI’s. A continuación se muestra toda la información relevante y relacionada al proceso de cancelación. </p>
+<p> En el esquema anterior, los campos que debían añadirse a la petición eran los siguientes:
+    <ul>
+        <li> UUID </li>
+        <li> Total </li>
+        <li> RFCReceptor </li>
+        <li> Certificado en formato PEM </li>
+        <li> Llave en formato PEM <li>
+    </ul>
+    En el nuevo esquema, se añadieron los siguientes campos:
+    <ul>
+        <li> Motivo  </li>
+        <li> Folio Sustituto </li>
+    </ul>
+</p>
+
+<p> Se requiere el envio de los certificado y llave privada del CSD en .PEM </p>
 
 ```
 var axios = require('axios');
 var APIKEY;
 
-const init_consulta_rfc = (user, password) => {
+const cancelacion = (user, password) => {
 
    // Get API key first
    const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
@@ -382,27 +515,44 @@ const init_consulta_rfc = (user, password) => {
    axios(config)
        .then(res => {
            APIKEY = res.data.api_key;
-           consulta_rfc_request();
+           cancelacion_request();
        })     
        .catch(err => console.log(err));
 }
 
-const consulta_rfc_request = () => {
+const cancelacion_request = () => {
+    //Parametros
+     var emisor = "XIA190128J61"
+     var uuid = "766428AF-101A-4EF8-B897-799270629076"
+     var receptor = "XAXX010101000"
+     var total = "0.0"
+     var motivo = "02"
+     var folios_sustituto = ""
 
-   // Declare params
-   var payload = JSON.stringify({
-       "rfc": "ROPS670907FU1"
+     var uuids = { 'uuid': uuid, 'rfc_receptor': receptor, 'total': total, 'motivo': motivo, 'folios_sustituto': folios_sustituto }
+     var folios =[]
+     folios.push(uuids)
+
+  var payload = JSON.stringify({ 
+    'rfc_emisor': emisor,
+    'folios': {
+      'folio': folios
+    },
+    'cert_pem': "-----BEGIN CERTIFICATE-----\
+    -----END CERTIFICATE-----",
+    'llave_pem': "-----BEGIN PRIVATE KEY-----\
+    -----END PRIVATE KEY-----"
    });
   
    // Params, header, url, method
    var config = {
-       method: 'get',
-       url: 'https://staging.ws.timbox.com.mx/api/consulta_rfc',
-       headers: {
+        method: 'post',
+        url:'https://staging.ws.timbox.com.mx/api/cancelar_cfdi',
+        headers: {
            'x-api-key': APIKEY,
            'Content-Type': 'application/json'
-       },
-       data: payload
+        },
+        data: payload
    }
 
    axios(config)
@@ -415,62 +565,6 @@ const consulta_rfc_request = () => {
 }
 
 // Init (user, password)
-init_consulta_rfc('user','password');
-```
-<h4>Consulta LCO</h4>
-
-```
-var axios = require('axios');
-var APIKEY;
-
-const init_consulta_lco = (user, password) => {
-   // Get API key first
-   const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
-   const auth = `Basic ${credentials_64}`;
-
-   var config = {
-       method: 'get',
-       url: 'https://staging.ws.timbox.com.mx/api/auth',
-       headers: {
-           'Authorization': auth
-       },
-   };
-
-   axios(config)
-       .then(res => {
-           APIKEY = res.data.api_key;
-           consulta_lco_request();
-       })
-       .catch(err => console.log(err));
-}
-const consulta_lco_request = () => {
-   // Declare params
-   var payload = JSON.stringify({
-       "rfc": "ROPS670907FU1",
-       "no_certificado": "00001000000407219892"
-     });
-
-   // Params, header, url, method
-   var config = {
-       method: 'get',
-       url: 'https://staging.ws.timbox.com.mx/api/consulta_lco',
-       headers: {
-           'x-api-key': APIKEY,
-           'Content-Type': 'application/json'
-       },
-       data: payload
-   }
-
-   axios(config)
-       .then((res) => {
-           console.log(JSON.stringify(res.data))
-       })
-       .catch((err) => {
-           console.error('ERROR:', err);
-       });
-}
-
-// Start consulta Lco (user, password)
-init_consulta_lco('user','password');
+cancelacion('USER','PASS');
 
 ```
