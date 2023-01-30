@@ -699,6 +699,7 @@ const peticiones_pendientes_request = () => {
 peticiones_pendientes('USR','PASS');
 ```
 <h4>Método Aceptación Rechazo</h4>
+
 ```
 var axios = require('axios');
 
