@@ -36,7 +36,7 @@ const buscar_cfdi_request = () => {
 
     // Params, header, url, method
     var config = {
-        method: 'get',
+        method: 'post',
         url: 'https://staging.ws.timbox.com.mx/api/buscar_cfdi',
         headers: {
             'x-api-key': APIKEY,

@@ -2,7 +2,7 @@ var axios = require('axios');
 
 var APIKEY;
 
-const documento_relacionado = (user, password) => {
+const procesar_respuesta = (user, password) => {
 
     // Get API key first
     const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
@@ -19,30 +19,37 @@ const documento_relacionado = (user, password) => {
     axios(config)
         .then(res => {
             APIKEY = res.data.api_key;
-            documento_relacionado_request();
+            procesar_respuesta_request();
         })
         .catch(err => console.log(err));
 }
 
-const documento_relacionado_request = () => {
+const procesar_respuesta_request = () => {
+    var emisor = "XIA190128J61"
+    var uuid = "766428AF-101A-4EF8-XXXX-799270629076"
+    var receptor = "XAXX010101000"
+    var total = "0"
 
+    var folio = { 'uuid': uuid, 'rfc_emisor': emisor, 'total': total, respuesta: 'A'}
+    var folio_resp =[]
+    folio_resp.push(folio)
+    //var dato= { 'rfc_receptor': receptor,  respuestas: {folios_respuestas:folio}}
     // Declare params
-    var payload = JSON.stringify({
-        "uuid": "44235C12-0BEF-4919-9B44-7F8BFE44D451",
-        "rfc_receptor": "XIA190128J61",
-        "cert_pem": "-----BEGIN CERTIFICATE-----\
+    var payload = JSON.stringify({    
+        'rfc_receptor': receptor,
+        'respuestas':{folios_respuestas: folio_resp}, 
+ 
+        'cert_pem': "-----BEGIN CERTIFICATE-----\
         -----END CERTIFICATE-----",
-        "llave_pem": "-----BEGIN PRIVATE KEY-----\
+        'llave_pem': "-----BEGIN PRIVATE KEY-----\
         -----END PRIVATE KEY-----"
-
-
-           })
-
+        })
+           
 
     // Params, header, url, method
     var config = {
         method: 'post',
-        url: 'https://staging.ws.timbox.com.mx/api/consultar_documento_relacionado',
+        url: 'https://staging.ws.timbox.com.mx/api/procesar_respuesta',
         headers: {
             'x-api-key': APIKEY,
             'Content-Type': 'application/json'
@@ -60,4 +67,4 @@ const documento_relacionado_request = () => {
 }
 
 // Init (user, password)
-documento_relacionado('usuario', 'password');
+procesar_respuesta('USER','PASS');

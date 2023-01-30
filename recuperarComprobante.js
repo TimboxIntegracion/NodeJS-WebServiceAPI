@@ -36,7 +36,7 @@ const recuperar_comprobante_request = () => {
 
     // Params, header, url, method
     var config = {
-        method: 'get',
+        method: 'post',
         url: 'https://staging.ws.timbox.com.mx/api/recuperar_comprobante',
         headers: {
             'x-api-key': APIKEY,

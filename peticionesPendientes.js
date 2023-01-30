@@ -37,8 +37,8 @@ const peticiones_pendientes_request = () => {
   
    // Params, header, url, method
    var config = {
-       method: 'get',
-url:'https://staging.ws.timbox.com.mx/api/consultar_peticiones_pendientes',
+       method: 'post',
+       url:'https://staging.ws.timbox.com.mx/api/consultar_peticiones_pendientes',
        headers: {
            'x-api-key': APIKEY,
            'Content-Type': 'application/json'

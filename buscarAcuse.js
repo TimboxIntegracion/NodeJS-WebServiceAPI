@@ -31,8 +31,8 @@ const buscar_acuse_request = () => {
     var payload = JSON.stringify({
         "parametros_acuse": {
             "uuids": {
-                "uuid": [
-                    "3E30C124-58FB-408B-84D6-C253E8E573F1"
+            "Comprobante":[
+                {"uuid":  "3E30C124-XXXX-XXXX-XXXX-C253E8E573F1"},
                 ]
             }
         }
