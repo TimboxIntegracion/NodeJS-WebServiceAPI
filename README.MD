@@ -4,19 +4,6 @@
 
 <p>En el presente documento se encuentra la documentación correspondiente a los snippets de código desarrollados en NodeJs v11.15.0, así como también las librerías externas utilizadas para realizar las solicitudes HTTP correspondientes a la API REST del proyecto de Web Service de Timbox.</p>
 
-<ul>
-    <li>timbrar_cfdi 3.3</li>
-    <li>timbrar_cfdi 4.0</li>
-    <li>buscar_cfdi</li>
-    <li>buscar_acuses</li>
-    <li>recuperar_comprobante</li>
-    <li>obtener consumo</li>
-    <li>Consulta_documento_relacionado</li>
-    <li>Consulta_peticiones_pendientes</li>
-    <li>Cancelacion cfdi</li>
-    <li>Aceptación/Rechazo</li>
-
-</ul> 
 
 <p>Para realizar las solicitudes HTTP en node.js se utlizó la version de node 11.15.0 en conjunto con la biblioteca "axios" para realizar las peticiones HTTP</p>
 
@@ -29,19 +16,22 @@
     	sudo apt install nodejs
 </p>
 <h4>Instalación de axios</h4>
-<p>
+
     	npm install axios
-</p>
+
 <h4>Para realizar pruebas desde la terminal con el siguiente comando:</h4>
-<p>
-	node archivo.js
-</p>
+
+	    node archivo.js
+
 <h4>Autenticación</h4>
 
 <p>Se requiere una autenticación básica para generar una API-KEY</p>
 
 <p> URL de autenticación:</p>
-<span> https://staging.ws.timbox.com.mx/api/auth</span>
+<ul>
+    <li> Ambiente Producción <span> https://sistema.timbox.com.mx/api/auth </span>  </li>
+    <li> Ambiente Pruebas <span> https://staging.ws.timbox.com.mx/api/auth</span></li>
+</ul>
 
 <h4>Snippet de Autenticación</h4>
 
@@ -79,6 +69,10 @@ const init_buscar_acuse = (user, password) => {
 ```
 
 <h4>Método Buscar Acuse</h4>
+<ul>
+    <li> Ambiente Producción <span> https://sistema.timbox.com.mx/api/buscar_acuse_recepcion </span>  </li>
+    <li> Ambiente Pruebas <span> https://staging.ws.timbox.com.mx/api buscar_acuse_recepcion </span></li>
+</ul>
 
 ```
 var axios = require('axios');
@@ -143,6 +137,10 @@ init_buscar_acuse('user','password');
 ```
 
 <h4>Método Buscar CFDI</h4>
+<ul>
+    <li> Ambiente Producción <span> https://sistema.timbox.com.mx/api/buscar_cfdi </span>  </li>
+    <li> Ambiente Pruebas <span> https://staging.ws.timbox.com.mx/api/buscar_cfdi </span></li>
+</ul>
 
 ```
 var axios = require('axios');
@@ -207,6 +205,10 @@ init_buscar_cfdi('user','password');
 
 <h4>Método Timbrar CFDI 4.0</h4>
 <p> Para timbrar un XML debe enviarse el archivo cifrado en base 64.</p>
+<ul>
+    <li> Ambiente Producción <span> https://sistema.timbox.com.mx/api/timbrar_cfdi_40 </span>  </li>
+    <li> Ambiente Pruebas <span> https://staging.ws.timbox.com.mx/api/timbrar_cfdi_40 </span></li>
+</ul>
 
 ```
 var axios = require('axios');
@@ -281,6 +283,10 @@ init_timbrar_cfdi('user', 'password');
 
 <h4>Método Timbrar CFDI 3.3</h4>
 <p> Para timbrar un XML debe enviarse el archivo cifrado en base 64.</p>
+<ul>
+    <li> Ambiente Producción <span> https://sistema.timbox.com.mx/api/timbrar_cfdi_33 </span>  </li>
+    <li> Ambiente Pruebas <span> https://staging.ws.timbox.com.mx/api/timbrar_cfdi_33 </span></li>
+</ul>
 
 ```
 var axios = require('axios');
@@ -359,10 +365,15 @@ const timbrar_cfdi_request = () => {
 // Init (user, password)
 init_timbrar_cfdi('user', 'password');
 ```
+
 <h4>Método Obtener Consumo </h4>
+<ul>
+    <li> Ambiente Producción <span> https://sistema.timbox.com.mx/api/obtener_consumo </span>  </li>
+    <li> Ambiente Pruebas <span> https://staging.ws.timbox.com.mx/api/obtener_consumo </span></li>
+</ul>
 
 ```
-vvar axios = require('axios');
+var axios = require('axios');
 
 var APIKEY;
 
@@ -413,7 +424,12 @@ const obtener_consumo_request = () => {
 init_obtener_consumo('user', 'password');
 
 ```
+
 <h4>Método Recuperar Comprobante</h4>
+<ul>
+    <li> Ambiente Producción <span> https://sistema.timbox.com.mx/api/recuperar_comprobante </span>  </li>
+    <li> Ambiente Pruebas <span> https://staging.ws.timbox.com.mx/api/recuperar_comprobante </span></li>
+</ul>
 
 ```
 var axios = require('axios');
@@ -476,6 +492,7 @@ const recuperar_comprobante_request = () => {
 init_recuperar_comprobante('usuario', 'password');
 
 ```
+
 <h4>Método Cancelación CFDI's</h4>
 <p> A partir del 01 de enero de 2022 el SAT modificó el esquema para la cancelación de CFDI’s. A continuación se muestra toda la información relevante y relacionada al proceso de cancelación. </p>
 <p> En el esquema anterior, los campos que debían añadirse a la petición eran los siguientes:
@@ -494,6 +511,10 @@ init_recuperar_comprobante('usuario', 'password');
 </p>
 
 <p> Se requiere el envio de los certificado y llave privada del CSD en .PEM </p>
+<ul>
+    <li> Ambiente Producción <span> https://sistema.timbox.com.mx/api/cancelar_cfdi </span>  </li>
+    <li> Ambiente Pruebas <span> https://staging.ws.timbox.com.mx/api/cancelar_cfdi </span></li>
+</ul>
 
 ```
 var axios = require('axios');
@@ -570,6 +591,10 @@ cancelacion('USER','PASS');
 
 ```
 <h4>Método Consulta Documentos Relacionados</h4>
+<ul>
+    <li> Ambiente Producción <span> https://sistema.timbox.com.mx/api/consultar_documento_relacionado </span>  </li>
+    <li> Ambiente Pruebas <span> https://staging.ws.timbox.com.mx/api/consultar_documento_relacionado </span></li>
+</ul>
 
 ```
 var axios = require('axios');
@@ -636,6 +661,10 @@ documento_relacionado('USER','PASS');
 ```
 
 <h4>Método Consulta Peticiones Pendientes</h4>
+<ul>
+    <li> Ambiente Producción <span> https://sistema.timbox.com.mx/api/consultar_peticiones_pendientes </span>  </li>
+    <li> Ambiente Pruebas <span> https://staging.ws.timbox.com.mx/api/consultar_peticiones_pendientes </span></li>
+</ul>
 
 ```
 var axios = require('axios');
@@ -699,6 +728,10 @@ const peticiones_pendientes_request = () => {
 peticiones_pendientes('USR','PASS');
 ```
 <h4>Método Aceptación Rechazo</h4>
+<ul>
+    <li> Ambiente Producción <span> https://sistema.timbox.com.mx/api/procesar_respuesta</span>  </li>
+    <li> Ambiente Pruebas <span> https://staging.ws.timbox.com.mx/api/procesar_respuesta </span></li>
+</ul>
 
 ```
 var axios = require('axios');
@@ -772,3 +805,81 @@ const procesar_respuesta_request = () => {
 // Init (user, password)
 procesar_respuesta('USER','PASS');
 ```
+<h4>Método Consultar Estatus</h4>
+<ul>
+    <li> Ambiente Producción <span> https://sistema.timbox.com.mx/api/consultar_estaus </span>  </li>
+    <li> Ambiente Pruebas <span> https://staging.ws.timbox.com.mx/api/consultar_estaus </span></li>
+</ul>
+
+```
+var axios = require('axios');
+
+
+var APIKEY;
+
+
+const init_consultar_estatus = (user, password) => {
+
+
+   // Get API key first
+   const credentials_64 = Buffer.from(`${user}:${password}`).toString('base64');
+   const auth = `Basic ${credentials_64}`;
+
+
+   var config = {
+       method: 'get',
+       url: 'https://staging.ws.timbox.com.mx/api/auth',
+       headers: {
+           'Authorization': auth
+       },
+   };
+
+
+  
+   axios(config)
+       .then(res => {
+           APIKEY = res.data.api_key;
+           consultar_estatus_request();
+       })
+       .catch(err => console.log(err));
+}
+
+
+const consultar_estatus_request = () => {
+
+
+   // Declare params
+   var payload = JSON.stringify({
+           "uuid": "3E30C124-XXXX-XXXX-XXXX-C253E8E573F1",
+		“rfc_emisor”: ‘’
+     		“rfc_receptor”: “”
+ 		“total”: “0.0”
+   });
+
+
+   // Params, header, url, method
+   var config = {
+       method: 'get',
+       url: 'https://staging.ws.timbox.com.mx/api/consultar_estatus',
+       headers: {
+           'x-api-key': APIKEY,
+           'Content-Type': 'application/json'
+       },
+       data: payload
+   }
+
+
+   axios(config)
+       .then((res) => {
+           console.log(JSON.stringify(res.data))
+       })
+       .catch((err) => {
+           console.error('ERROR:', err.response.data.message);
+       });
+}
+
+
+// Init (user, password)
+init_buscar_cfdi('USER', 'PASS');
+```
+
